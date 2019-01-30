@@ -94,15 +94,23 @@ How should I implement it?"
 
 * Code
 
-* XSS
-A simple template
-.code -numbers examples/xss/index.html 
+# * XSS
+# A simple template
 
-* XSS
-.play -numbers examples/xss/main.go /package main/,/OMIT/
+# .code -numbers examples/xss/index.html 
+# * XSS
+# 
+# http://127.0.0.1:3000/?name=Anna
+#
+# vs
+# 
+# http://127.0.0.1:3000/?name=<script>alert("Hey, you!")
+# 
+# * XSS
+# .play -numbers examples/xss/main.go /package main/,/OMIT/
 
-* XSS: prevent
-.play -numbers examples/xss-prevent/main.go
+# * XSS: prevent
+# .play -numbers examples/xss-prevent/main.go
 
 * Input Validation and Sanitation
 .image https://monosnap.com/image/OO5NJbiSQVKshQCQYdSNsL61MGfzwz.png _ 940
