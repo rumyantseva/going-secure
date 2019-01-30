@@ -7,6 +7,10 @@ go get -u golang.org/x/tools/cmd/present
 present
 ```
 
+## Shownotes
+
+https://jfrog.com/shownotes
+
 ## Links
 
 *   [Sumo Logic masking rules](https://help.sumologic.com/Manage/Collection/Processing-Rules/Mask-Rules)

@@ -8,10 +8,13 @@ RUN mkdir -p /go/src/github.com/rumyantseva/myapp
 ADD . /go/src/github.com/rumyantseva/myapp
 WORKDIR /go/src/github.com/rumyantseva/myapp
 
-# Build the binary with go build:
-# Important! Here we consider that our vendor directory is immutable.
+# Build the binary with go build
+
+# Important! Here we consider the "old way" when the vendor
+# directory is commited and pushed to the repo
+# and might be considered as immutable.
 # If you use go mod and GOPROXY,
-# this part should be handled a little bit differentely
+# this part should be handled a little bit differentely!
 RUN CGO_ENABLED=0 go build \
 	-o bin/myapp github.com/rumyantseva/myapp/cmd/myapp
 
