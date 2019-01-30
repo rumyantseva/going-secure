@@ -1,0 +1,16 @@
+bazil.org/fuse v0.0.0-20180421153158-65cc252bf669/go.mod h1:qxnKLNqSuEvh7f9e0kIjeNGS4ozF/Tz/5thyRbQRz/0=
+cloud.google.com/go v0.23.0/go.mod h1:2f+Rnn52tVMQrOisiTby56R7sxmyq1ThwTZENyv7USg=
+cloud.google.com/go v0.26.0/go.mod h1:2f+Rnn52tVMQrOisiTby56R7sxmyq1ThwTZENyv7USg=
+cloud.google.com/go v0.31.0/go.mod h1:2f+Rnn52tVMQrOisiTby56R7sxmyq1ThwTZENyv7USg=
+cloud.google.com/go v0.34.0/go.mod h1:dZNumEpZ8cMgrFXUoYz3bjfqmIVOvskaMG20DF/RrUg=
+contrib.go.opencensus.io/exporter/stackdriver v0.8.0/go.mod h1:hNe5qQofPbg6bLQY5wHCvQ7o+2E5P8PkegEuQ+MyRw0=
+dmitri.shuralyov.com/app/changes v0.0.0-20180602232624-0a106ad413e3/go.mod h1:Yl+fi1br7+Rr3LqpNJf1/uxUdtRUV+Tnj0o93V2B9MU=
+dmitri.shuralyov.com/app/changes v0.0.0-20181114035150-5af16e21babb/go.mod h1:YQ4LJqXz2caSQK7PBEWfE1wRe4uRjWNdb+O2tS+WB9I=
+dmitri.shuralyov.com/html/belt v0.0.0-20180602232347-f7d459c86be0/go.mod h1:JLBrvjyP0v+ecvNYvCpyZgu5/xkfAUhi6wJj28eUfSU=
+dmitri.shuralyov.com/route/github v0.0.0-20180323232716-ce4edef1f8c9/go.mod h1:5oSmIM2HxgXgKSUK0E6F3pcAfHztRSpKaVxglL+HLSk=
+dmitri.shuralyov.com/service/change v0.0.0-20181023043359-a85b471d5412/go.mod h1:a1inKt/atXimZ4Mv927x+r7UpyzRUf4emIoiiSC2TN4=
+dmitri.shuralyov.com/service/change v0.0.0-20181114024418-7424d8ddca1d/go.mod h1:i9kndW4+zKINTf3IEFWrxeJPYF793KQpoZ81Q8BLnVc=
+dmitri.shuralyov.com/state v0.0.0-20180228185332-28bcc343414c/go.mod h1:0PRwlb0D6DFvNNtx+9ybjezNCa8XF0xaYcETyp6rHWU=
+git.apache.org/thrift.git v0.0.0-20180902110319-2566ecd5d999/go.mod h1:Y/nCxIDlKOCouVzli/dTpZus9VOLMbAmehO/6qEBPNY=
+git.apache.org/thrift.git v0.12.0/go.mod h1:DsjOAwv9ioin9rd6Z2ZYiuZNPxecmGvZM3JQVJT6mR8=
+github.com/AaronO/go-git-http v0.0.0-20161214145340-1d9485b3a98f/go.mod h1:+6Yuq73F9068Na+mSBNXCvyuxvgw4f/g5ii40e3U8Sc=

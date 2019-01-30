@@ -1,0 +1,7 @@
+imageWhitelist:
+- artifactory/my-project/whitelist-image@sha256:<DIGEST>
+packageVulnerabilityPolicy:
+  maximumSeverity: HIGH
+  whitelistCVEs:
+    providers/jfrog-xray/notes/CVE-2017-1000082
+    providers/jfrog-xray/notes/CVE-2017-1000082

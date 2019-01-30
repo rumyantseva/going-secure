@@ -1,0 +1,457 @@
+Going secure with Go
+GoDays, Berlin
+09:00 30 Jan 2019
+
+Elena Grahovac
+Lead TechOps Automation Engineer, N26
+@webdeva
+
+Baruch Sadogursky
+Head of Developer Relations, JFrog​
+@jbaruch
+
+* Shownotes
+
+.link https://jfrog.com/shownotes
+
+– Sources and Slides 
+.link https://github.com/rumyantseva/going-secure
+– Video (by tomorrow)
+– Comments, Ratings
+– Raffle!
+
+* Security Onion Model
+.image https://docs.google.com/drawings/d/e/2PACX-1vQqIv49nLVnCoLkNHsJb95RR_4Yc3aY6UtEZ_L_p_dG1KWXLQNYEhWhicI8GnzzyIzTr8CCQkqb_-HB/pub?w=864&h=648
+
+* Security Onion Model
+.image https://docs.google.com/drawings/d/e/2PACX-1vRsWQfweHiEfYnXqzdBXl_8Sxkq3S3g0ML5hq38g0WWcABKC2fX8RY9VikOeQ683qNs-Alhe8PW_I7u/pub?w=864&h=648
+
+* Data
+
+* Passwords
+
+* Passwords
+
+"I know that passwords must be encrypted.
+How should I implement it?"
+
+* Let the DB encrypt passwords
+.code examples/postgres-crypt/crypt.sql
+
+* Random is not really random
+.play -numbers examples/random/math-seed-static/main.go
+
+* Seed is not enough
+.play -numbers examples/random/math-seed-time/main.go
+
+* What crypto/rand does?
+.play -numbers examples/random/crypto/main.go
+
+* User Data Protection
+
+* Sumo Logic
+.image https://monosnap.com/image/8crW9oqB5YmNcYI8KPoSgUJYhgrxS1.png _ 940
+
+* Splunk
+.image https://monosnap.com/image/mfRDS4LqrV0G5pVZOT6Fz5DQAm8hJY.png _ 940
+
+* ELK
+.image https://www.elastic.co/assets/bltd4cbd90b4b66c9ff/security-users-roles.jpg _ 940
+
+* Fluentd
+.image https://monosnap.com/image/rsozipqsTCc18pkPqSRRHwvrUEOyq2.png _ 940
+ 
+# * GDPR
+# – User data not in a database only
+# – Use UUID instead of user data
+
+* Secrets Management
+
+* People are horrible in secrets management
+.image https://monosnap.com/image/jcG5J9rgUu4g68Yf440VguXT8B9fzn.png _ 940
+
+* And no, deleting won't help
+.image https://monosnap.com/image/NIwqdqKd50mQl0EkIsnKjNGmCBWEdH.png _ 760
+.link https://rtyley.github.io/bfg-repo-cleaner/
+
+* Kubernetes should be great, right?
+- How the data of secrets are stored?
+- Who can access and modify them?
+- Do you use secrets as ENV?
+
+.code -numbers examples/environ/Dockerfile
+
+* Proper Secrets Management
+.image https://monosnap.com/image/mRHgYXdOyMVkmZpm3G3yLJDzoe26O3.png _ 760
+.link https://vaultproject.io
+
+# * Errors and Panics
+# – filter error messages 
+# – handle panics to exctract valuable information
+
+* Security Onion Model
+.image https://docs.google.com/drawings/d/e/2PACX-1vRsWQfweHiEfYnXqzdBXl_8Sxkq3S3g0ML5hq38g0WWcABKC2fX8RY9VikOeQ683qNs-Alhe8PW_I7u/pub?w=864&h=648
+
+* Code
+
+* XSS
+A simple template
+.code -numbers examples/xss/index.html 
+
+* XSS
+.play -numbers examples/xss/main.go /package main/,/OMIT/
+
+* XSS: prevent
+.play -numbers examples/xss-prevent/main.go
+
+* Input Validation and Sanitation
+.image https://monosnap.com/image/OO5NJbiSQVKshQCQYdSNsL61MGfzwz.png _ 940
+
+* SQL Injection
+.code -numbers examples/sql-injection/single.go
+
+* SQL Injection
+.code -numbers examples/sql-injection/bulk.go
+
+* Static Code Analysis: gosec
+Let's call `gosec` against previous examples
+
+.code examples/gosec/output.log
+
+* Static Code Analysis: other linters
+- Try `depguard` to whitelist or blacklist libraries
+- Check out more linters: `golangci-lint`
+
+* Hide debug handles
+.code -numbers examples/pprof/default.go
+
+* Hide debug handles
+.code -numbers examples/pprof/alternative.go //,/OMIT/
+
+* Hide debug handles
+.code -numbers examples/pprof/alternative.go /external/,/OMIT/
+
+* Fuzzy testing
+.image https://monosnap.com/image/owYSIk1Xd84FXfX4IZ5NqDaLcY7wOt.png
+
+.link https://github.com/dvyukov/go-fuzz
+
+* Security Onion Model
+.image https://docs.google.com/drawings/d/e/2PACX-1vRsWQfweHiEfYnXqzdBXl_8Sxkq3S3g0ML5hq38g0WWcABKC2fX8RY9VikOeQ683qNs-Alhe8PW_I7u/pub?w=864&h=648
+
+* Dependencies
+– Do you trust your dependencies?
+
+* Dependencies
+– Do you trust your dependencies?
+– How about transitive dependencies?
+
+* Dependencies
+– Do you trust your dependencies?
+– How about transitive dependencies?
+– Do you even know you have transitive dependencies?
+
+* Dependencies checklist
+– Code quality
+
+* Dependencies checklist
+– Code quality
+– Test coverage
+
+* Dependencies checklist
+– Code quality
+– Test coverage
+– Activity
+
+* Dependencies checklist
+– Code quality
+– Test coverage
+– Activity
+– Maintainers
+
+* Dependencies checklist
+– Code quality
+– Test coverage
+– Activity
+– Maintainers
+– Security
+
+* Dependencies checklist
+– Code quality
+– Test coverage
+– Activity
+– Maintainers
+– Security
+– Licenses
+
+* Dependencies checklist
+– Code quality
+– Test coverage
+– Activity
+– Maintainers
+– Security
+– Licenses
+.link https://research.swtch.com/deps
+
+* What can go wrong?
+.image https://monosnap.com/image/h61RuHAavfX2AGlOdSO7Ys6bNG5Bhs.png
+
+* What can we learn?
+– Picking "safe" dependencies is not enough
+
+* What can we learn?
+– Picking "safe" dependencies is not enough
+– Know what transitive dependencies you use
+
+* What can we learn?
+– Picking "safe" dependencies is not enough
+– Know what transitive dependencies you use
+– Continuously monitor new discoveries
+
+* What can we learn?
+– Picking "safe" dependencies is not enough
+– Know what transitive dependencies you use
+– Continuously monitor new discoveries
+– Upgrade swiftly
+
+* What can go wrong?
+.image https://monosnap.com/image/ttbZbFtq231yYTZ0hUb2Kwx4K5NRrx.png
+
+* What can we learn?
+– A single maintainer is a threat (burnout, anyone?)
+
+* What can we learn?
+– A single maintainer is a threat (burnout, anyone?)
+– Automatic upgrades (running latest and ranges) are dangerous
+
+* What can we learn?
+– A single maintainer is a threat (burnout, anyone?)
+– Automatic upgrades (running latest and ranges) are dangerous
+– Lock your dependencies versions
+
+* What can go wrong?
+.image https://monosnap.com/image/09XcY2RyXN0YAikwzmETxk4Lpu5783.png
+
+* What can we learn?
+– Immutable dependencies are a must
+
+* What can we learn?
+– Immutable dependencies are a must
+– Central repositories are problematic
+
+* What can go wrong?
+.image https://monosnap.com/image/M6Xd5efRJkvMrBJ5hi9mWJT7TMUWpp.png
+
+* Can it get any worse?
+.image https://monosnap.com/image/iZU7ncqwziQI9MDSJ4zvdzZQL3YWCk.png 620 _
+
+* What can we learn?
+– Licenses are as a bitch as security issues
+
+* What can we learn?
+– Licenses are as a bitch as security issues
+– Even minor upgrades are dangerous
+
+* Giveaways from the downfalls
+– Be in control of your dependency tree
+
+* Giveaways from the downfalls
+– Be in control of your dependency tree
+– Be conscious about what you add
+
+* Giveaways from the downfalls
+– Be in control of your dependency tree
+– Be conscious about what you add
+– Continuously verify the dependencies
+
+* Giveaways from the downfalls
+– Be in control of your dependency tree
+– Be conscious about what you add
+– Continuously verify the dependencies
+– Always have reproducible build
+
+* Giveaways from the downfalls
+– Be in control of your dependency tree
+– Be conscious about what you add
+– Continuously verify the dependencies
+– Always have reproducible build
+– Never use ranges (especially open ranges)
+
+* Giveaways from the downfalls
+– Be in control of your dependency tree
+– Be conscious about what you add
+– Continuously verify the dependencies
+– Always have reproducible build
+– Never use ranges (especially open ranges)
+– Upgrade your dependencies frequently 
+
+* Go is here to help
+– Unused imports are errors
+
+* Go is here to help
+– Unused imports are errors
+– Unused packages are deleted from go.mod
+
+* Go is here to help
+– Unused imports are errors
+– Unused packages deleted from go.mod
+– Transitive dependencies are added to go.mod
+
+* Regulary check and update your go.mod!
+.code -numbers examples/hello/go.mod
+
+* Tools are here to help
+– Vulnerabilities and licenses databases (NVD and others, JFrog Xray Go support to be announced)
+
+* Tools are here to help
+- Vulnerabilities and licenses databases (NVD and others, JFrog Xray Go support to be announced)
+- Minimal Sanity check: `goreportcard`
+.link https://goreportcard.com
+
+* Central repositories
+
+* So, the guy with `j` in the nickname is going to preach about central repositories...
+.image https://i.kym-cdn.com/entries/icons/original/000/000/091/TrollFace.jpg _ 300
+
+* OK, that's why central repositories are bad
+– Single point of failure (if it's down, I can't build)
+
+* OK, that's why central repositories are bad
+– Single point of failure (if it's down, I can't build)
+– Package authentication (who said I could trust this file?)
+
+* OK, that's why central repositories are bad
+– Single point of failure (if it's down, I can't build)
+– Package authentication (who said I could trust this file?)
+– Governance and moderation questions  (that looks bad, who takes it down?)
+
+* OK, that's why central repositories are bad
+– Single point of failure (if it's down, I can't build)
+– Package authentication (who said I could trust this file?)
+– Governance and moderation questions  (that looks bad, who takes it down?)
+– Immutability (`left-pad`)
+
+* Let's see how GitHub solves it all!
+– Distributed
+
+* Let's see how GitHub solves it all!
+– Distributed
+– Package authentication built-in
+
+* Let's see how GitHub solves it all!
+– Distributed
+– Package authentication built-in
+– Has a reputation for governance and moderation
+
+* Wait for a second, not so fast!
+– Autogenerated zips != prepacked go modules
+
+* Wait for a second, not so fast!
+– Autogenerated zips != prepacked go modules
+– `git clone` is not a robust protocol
+
+* Wait for a second, not so fast!
+– Autogenerated zips != prepacked go modules
+– `git clone` is not a robust protocol
+– Transfer multiple text files and zip them every time on the client is not efficient
+
+* Wait for a second, not so fast!
+– Autogenerated zips != prepacked go modules
+– `git clone` is not a robust protocol
+– Transfer multiple text files and zip them every time on the client is not efficient
+– Repositories are deletable
+
+* Wait for a second, not so fast!
+– Autogenerated zips != prepacked go modules
+– `git clone` is not a robust protocol
+– Transfer multiple text files and zip them every time on the client is not efficient
+– Repositories are deletable
+– Tags are mutable <- that's the worst
+
+* So, how do we solve it?!
+– Vendoring? 
+
+* So, how do we solve it?!
+– Vendoring? :trollface:
+.link https://www.google.com/search?q=go+vendoring+is+anti-pattern
+
+* So, how do we solve it?!
+– Vendoring? :trollface:
+.link https://www.google.com/search?q=go+vendoring+is+anti-pattern
+– in-house repositories (Project Athens, JFrog Artifactory)
+.link https://docs.gomods.io/
+.link https://jfrog.com/integration/go-registry/
+
+* So, how do we solve it?!
+– Vendoring? :trollface:
+.link https://www.google.com/search?q=go+vendoring+is+anti-pattern
+– in-house repositories (Project Athens, JFrog Artifactory)
+.link https://docs.gomods.io/
+.link https://jfrog.com/integration/go-registry/
+– Federation of central repositories (a.k.a. mirror federation) – GoCenter.io
+.link https://gocenter.io/
+.link https://blog.golang.org/#TOC_6.
+
+* Security Onion Model
+.image https://docs.google.com/drawings/d/e/2PACX-1vRsWQfweHiEfYnXqzdBXl_8Sxkq3S3g0ML5hq38g0WWcABKC2fX8RY9VikOeQ683qNs-Alhe8PW_I7u/pub?w=864&h=648
+
+* Containers
+
+* How do you build services?
+
+- Compiler on the CI/CD nodes
+- Docker: multi-stage builds
+
+*  Multi-stage builds
+Stage 0:
+.code -numbers examples/dockerfile-multistaging/Dockerfile //,/Stage 1/
+
+*  Multi-stage builds
+Stage 1:
+.code -numbers examples/dockerfile-multistaging/Dockerfile /Stage 1/,
+
+* Separate containers for testing
+Base image (to push as "golang-linters"):
+.code -numbers examples/dockerfile-linters/Dockerfile.base
+
+* Separate containers for testing
+Run linters and tests:
+.code -numbers examples/dockerfile-linters/Dockerfile
+
+* Security Policies
+Kubernetes example: `PodSecurityPolicies`
+- Disable privileged containers
+- Consider `MustRunAsNonRoot`
+- Limit possible types of volumes
+
+.link https://kubernetes.io/docs/concepts/policy/pod-security-policy/
+
+* Checking your OS-level dependencies is easy
+.image https://monosnap.com/image/lILsRCnOJMuHJqvDbeSA6N2FX8Hzs4.png _ 480
+
+* Checking your OS-level dependencies is straightforward (but not enough)
+.image https://monosnap.com/image/lILsRCnOJMuHJqvDbeSA6N2FX8Hzs4.png _ 360
+– Those won't check your application files!
+
+* Moar Kuberentes runtime security controls
+.image https://monosnap.com/image/HFrM4xoDAgjbnMTMWLhHKXF5EWzgDM.png _ 940
+
+* Kritis
+.code /examples/kritis/kritis.yaml
+
+* Overwhelmed?
+
+* Automate everything
+
+* DevSecOps
+
+* Policies as code
+
+* Q&A and vanity links
+.link https://www.jfrog.com/shownotes/
+.link https://github.com/rumyantseva/going-secure
+@webdeva
+
+@jbaruch
+
+`#GoDays`

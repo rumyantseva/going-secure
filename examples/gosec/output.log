@@ -1,0 +1,21 @@
+Results:
+
+[going-secure/examples/random/math-seed-time/main.go:13] - G404: Use of weak random number
+generator (math/rand instead of crypto/rand) (Confidence: MEDIUM, Severity: HIGH)
+  > rand.Read(b)
+
+[going-secure/examples/sql-injection/bulk.go:14-17]
+- G201: SQL string formatting (Confidence: HIGH, Severity: MEDIUM)
+  > fmt.Sprintf(
+                "INSERT INTO users (name) VALUES %s",
+                strings.Join(values, ","),
+        )
+
+[going-secure/examples/sql-injection/single.go:9]
+- G201: SQL string formatting(Confidence: HIGH, Severity: MEDIUM)
+  > fmt.Sprintf("SELECT * FROM users WHERE name = '%s'", name)
+
+Summary:
+   Files: 10
+   Lines: 181
+  Issues: 11
