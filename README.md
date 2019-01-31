@@ -1,6 +1,9 @@
 # Going secure with Go
 
-How to run the slides:
+
+The slides are avaliable at [talks.godoc.org](https://talks.godoc.org/github.com/rumyantseva/going-secure/going-secure.slide).
+
+You can also run the slides on your machine:
 
 ```
 go get -u golang.org/x/tools/cmd/present
