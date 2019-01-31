@@ -445,7 +445,7 @@ Kubernetes example: `PodSecurityPolicies`
 .image https://monosnap.com/image/HFrM4xoDAgjbnMTMWLhHKXF5EWzgDM.png _ 940
 
 * Kritis
-.code /examples/kritis/kritis.yaml
+.code examples/kritis/kritis.yaml
 
 * Overwhelmed?
 
