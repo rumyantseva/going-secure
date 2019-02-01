@@ -10,9 +10,9 @@ go get -u golang.org/x/tools/cmd/present
 present
 ```
 
-## Shownotes
+## Shownotes & video
 
-https://jfrog.com/shownotes
+https://jfrog.com/shownote/going-secure-with-go/
 
 ## Links
 
